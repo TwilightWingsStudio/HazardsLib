@@ -9,7 +9,8 @@ package tws.zcaliptium.hzdslib.client;
 
 import tws.zcaliptium.hzdslib.common.CommonProxy;
 
-public class ClientProxy extends CommonProxy {
+public class ClientProxy extends CommonProxy
+{
 	@Override
 	public boolean isClient() {
 		return true;

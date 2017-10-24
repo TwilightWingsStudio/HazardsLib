@@ -7,7 +7,8 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common;
 
-public class CommonProxy {
+public class CommonProxy
+{
 	public boolean isClient() {
 		return false;
 	}

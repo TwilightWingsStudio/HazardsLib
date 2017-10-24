@@ -5,11 +5,11 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
  ******************************************************************************/
-package tws.zcaliptium.hzdslib.common;
+package tws.zcaliptium.hzdslib.common.items;
 
-public class ModInfo
+public class ItemAntirad extends ItemHZDS
 {
-	public static final String MODID = "hzdslib";
-	public static final String MODNAME = "Hazards Lib";
-	public static final String VERSION = "dev";
+	public ItemAntirad(String id) {
+		super(id);
+	}
 }

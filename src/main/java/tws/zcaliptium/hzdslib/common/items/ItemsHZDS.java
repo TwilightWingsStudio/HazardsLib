@@ -7,8 +7,14 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common.items;
 
-public class ItemsHZDS {
+public class ItemsHZDS
+{
+	public static ItemHZDS radiation_detector = null;
+	
 	public static void init() {
-		// TODO: Add items here.
+		new ItemAntirad("antirad");
+		new ItemRadGiver("radgiver");
+		
+		radiation_detector = new ItemHZDS("radiation_detector");
 	}
 }
