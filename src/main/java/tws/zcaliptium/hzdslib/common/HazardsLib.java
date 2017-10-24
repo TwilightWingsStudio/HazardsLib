@@ -14,24 +14,21 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = HazardsLib.MODID, version = HazardsLib.VERSION)
+@Mod(modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION)
 public class HazardsLib
 {
-    public static final String MODID = "hzdslib";
-    public static final String VERSION = "dev";
-    
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-    }
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    }
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+	}
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
-    }
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+	}
 }
