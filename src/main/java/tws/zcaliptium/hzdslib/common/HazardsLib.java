@@ -8,6 +8,8 @@
 package tws.zcaliptium.hzdslib.common;
 
 import net.minecraft.init.Blocks;
+import tws.zcaliptium.hzdslib.common.items.ItemsHZDS;
+import tws.zcaliptium.hzdslib.common.network.PacketHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -28,11 +30,13 @@ public class HazardsLib
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		ItemsHZDS.init();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+    	PacketHandler.init();
 	}
 
 	@EventHandler
