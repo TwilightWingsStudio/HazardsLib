@@ -13,7 +13,8 @@ import tws.zcaliptium.hzdslib.common.handlers.CommonEventHandler;
 
 public class CommonProxy
 {
-	public void registerEventHandlers() {
+	public void registerEventHandlers()
+	{
 		CommonEventHandler eventhandler = new CommonEventHandler();
 		FMLCommonHandler.instance().bus().register(eventhandler);
 		MinecraftForge.EVENT_BUS.register(eventhandler);

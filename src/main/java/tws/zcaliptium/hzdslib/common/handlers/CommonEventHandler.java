@@ -58,9 +58,10 @@ public class CommonEventHandler {
 					PlayerTracker newTracker = new PlayerTracker((EntityLivingBase)event.entity);
 					TrackerManager.addToManager(newTracker);
 					newTracker.loadFromNBT();
+
 					/*
-					if(!EnviroMine.proxy.isClient() || EnviroMine.proxy.isOpenToLAN()) {
-						ST_TrackerManager.syncMultiplayerTracker(newTracker);
+					if(!HazardsLib.proxy.isClient() || HazardsLib.proxy.isOpenToLAN()) {
+						TrackerManager.syncMultiplayerTracker(newTracker);
 					}
 					*/
 				} else {
@@ -84,7 +85,8 @@ public class CommonEventHandler {
 	}
 	
 	@SubscribeEvent
-	public void onLivingUpdate(LivingUpdateEvent event) {
+	public void onLivingUpdate(LivingUpdateEvent event)
+	{
 		if(!event.entityLiving.isDead && event.entityLiving instanceof EntityPlayer) {
 			PlayerTracker tracker = TrackerManager.lookupTracker(event.entityLiving);
 			

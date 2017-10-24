@@ -43,7 +43,8 @@ public class TrackerManager
 		}
 	}
 	
-	public static void saveAllWorldTrackers(World world) {
+	public static void saveAllWorldTrackers(World world)
+	{
 		HashMap<String,PlayerTracker> tempList = new HashMap<String,PlayerTracker>(trackerList);
 		Iterator<PlayerTracker> iterator = tempList.values().iterator();
 		
@@ -57,7 +58,8 @@ public class TrackerManager
 		}
 	}
 
-	public static void saveAndDeleteWorldTrackers(World world) {
+	public static void saveAndDeleteWorldTrackers(World world)
+	{
 		HashMap<String,PlayerTracker> tempList = new HashMap<String,PlayerTracker>(trackerList);
 		Iterator<PlayerTracker> iterator = tempList.values().iterator();
 		
@@ -128,7 +130,8 @@ public class TrackerManager
 		}
 	}
 
-	public static void syncMultiplayerTracker(PlayerTracker tracker) {
+	public static void syncMultiplayerTracker(PlayerTracker tracker)
+	{
 		if (!(tracker.owner instanceof EntityPlayer)) {
 			return;
 		}
@@ -139,7 +142,8 @@ public class TrackerManager
 		}
 	}
 	
-	public static PlayerTracker lookupTrackerFromUsername(String username) {
+	public static PlayerTracker lookupTrackerFromUsername(String username)
+	{
 		if(trackerList.containsKey(username)) {
 			return trackerList.get(username);
 		} else {

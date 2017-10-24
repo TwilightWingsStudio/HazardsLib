@@ -29,7 +29,8 @@ public class ClientProxy extends CommonProxy
 	}
 	
 	@Override
-	public boolean isOpenToLAN() {
+	public boolean isOpenToLAN()
+	{
 		if (Minecraft.getMinecraft().isIntegratedServerRunning()) {
 			return Minecraft.getMinecraft().getIntegratedServer().getPublic();
 		} else {

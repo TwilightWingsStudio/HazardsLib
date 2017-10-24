@@ -39,7 +39,8 @@ public class MsgSyncRadiation implements IMessage, IMessageHandler<MsgSyncRadiat
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public IMessage onMessage(MsgSyncRadiation message, MessageContext ctx) {
+	public IMessage onMessage(MsgSyncRadiation message, MessageContext ctx)
+	{
 		PlayerTracker tracker = TrackerManager.lookupTrackerFromUsername(Minecraft.getMinecraft().thePlayer.getCommandSenderName());
 		
 		if (tracker == null) {

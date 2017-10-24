@@ -25,12 +25,14 @@ import tws.zcaliptium.hzdslib.common.trackers.TrackerManager;
 @SideOnly(Side.CLIENT)
 public class ClientEventHandler
 {	
-	public boolean isPlayerHasItemOnHotbar(InventoryPlayer inventory, Item item) {
+	public boolean isPlayerHasItemOnHotbar(InventoryPlayer inventory, Item item)
+	{
         for (int i = 0; i < inventory.getHotbarSize(); ++i) {
             if (inventory.mainInventory[i] != null && inventory.mainInventory[i].getItem() == item) {
                 return true;
             }
         }
+
         return false;
 	}
 	
