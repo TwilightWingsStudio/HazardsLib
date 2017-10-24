@@ -10,6 +10,9 @@ package tws.zcaliptium.hzdslib.common;
 import net.minecraft.init.Blocks;
 import tws.zcaliptium.hzdslib.common.items.ItemsHZDS;
 import tws.zcaliptium.hzdslib.common.network.PacketHandler;
+
+import org.apache.logging.log4j.Logger;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -26,10 +29,13 @@ public class HazardsLib
 	
 	@SidedProxy(clientSide = "tws.zcaliptium.hzdslib.client.ClientProxy", serverSide = "tws.zcaliptium.hzdslib.common.CommonProxy")
 	public static CommonProxy proxy;
+
+	public static Logger modLog;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+    	modLog = event.getModLog();
 		ItemsHZDS.init();
 	}
 
@@ -37,6 +43,8 @@ public class HazardsLib
 	public void init(FMLInitializationEvent event)
 	{
     	PacketHandler.init();
+    	
+		proxy.registerEventHandlers();
 	}
 
 	@EventHandler

@@ -7,12 +7,33 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.client;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
 import tws.zcaliptium.hzdslib.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy
 {
 	@Override
+	public void registerEventHandlers()
+	{
+		super.registerEventHandlers();
+		ClientEventHandler eventhandler = new ClientEventHandler();
+		FMLCommonHandler.instance().bus().register(eventhandler);
+		MinecraftForge.EVENT_BUS.register(eventhandler);
+	}
+	
+	@Override
 	public boolean isClient() {
 		return true;
+	}
+	
+	@Override
+	public boolean isOpenToLAN() {
+		if (Minecraft.getMinecraft().isIntegratedServerRunning()) {
+			return Minecraft.getMinecraft().getIntegratedServer().getPublic();
+		} else {
+			return false;
+		}
 	}
 }

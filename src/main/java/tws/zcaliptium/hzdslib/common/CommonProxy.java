@@ -7,9 +7,23 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
+import tws.zcaliptium.hzdslib.common.handlers.CommonEventHandler;
+
 public class CommonProxy
 {
+	public void registerEventHandlers() {
+		CommonEventHandler eventhandler = new CommonEventHandler();
+		FMLCommonHandler.instance().bus().register(eventhandler);
+		MinecraftForge.EVENT_BUS.register(eventhandler);
+	}
+	
 	public boolean isClient() {
+		return false;
+	}
+	
+	public boolean isOpenToLAN() {
 		return false;
 	}
 }

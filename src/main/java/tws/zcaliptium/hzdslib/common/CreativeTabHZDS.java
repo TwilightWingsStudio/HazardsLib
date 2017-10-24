@@ -5,19 +5,25 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/lgpl-3.0.txt
  ******************************************************************************/
-package tws.zcaliptium.hzdslib.common.items;
+package tws.zcaliptium.hzdslib.common;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import tws.zcaliptium.hzdslib.common.ModInfo;
+import tws.zcaliptium.hzdslib.common.items.ItemsHZDS;
 
-public class ItemHZDS extends Item
+public class CreativeTabHZDS extends CreativeTabs
 {
-	public ItemHZDS(String id) {
-		GameRegistry.registerItem(this, id, ModInfo.MODID);
-		setUnlocalizedName(id);
-		setTextureName(ModInfo.MODID + ":" + id);
-		setCreativeTab(ItemsHZDS.tabHZDSItems);
+	public CreativeTabHZDS(int par1, String par2) {
+		super(par1, par2);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public Item getTabIconItem()
+	{
+	    return Items.bed;
 	}
 }

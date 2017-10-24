@@ -7,9 +7,33 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common.items;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import tws.zcaliptium.hzdslib.common.trackers.PlayerTracker;
+import tws.zcaliptium.hzdslib.common.trackers.TrackerManager;
+
 public class ItemAntirad extends ItemHZDS
 {
 	public ItemAntirad(String id) {
 		super(id);
+	}
+	
+	@Override
+	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
+	{
+		if (world.isRemote) {
+			return itemStack;
+		}
+
+		if (player instanceof EntityPlayerMP) {
+			PlayerTracker tracker = TrackerManager.lookupTracker(player);
+			if (tracker != null) {
+				tracker.radiation = 0;
+			}
+		}
+		
+		return itemStack;
 	}
 }

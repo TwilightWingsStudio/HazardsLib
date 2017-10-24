@@ -9,6 +9,7 @@ package tws.zcaliptium.hzdslib.common.network;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
 import tws.zcaliptium.hzdslib.common.ModInfo;
 
 public class PacketHandler {
@@ -18,6 +19,6 @@ public class PacketHandler {
 	{
 		int idx = 0;
 		
-		// TODO: Write messages for sync here.
+		INSTANCE.registerMessage(MsgSyncRadiation.class, MsgSyncRadiation.class, idx++, Side.CLIENT);
 	}
 }

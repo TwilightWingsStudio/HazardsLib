@@ -7,8 +7,13 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common.items;
 
+import net.minecraft.creativetab.CreativeTabs;
+import tws.zcaliptium.hzdslib.common.CreativeTabHZDS;
+
 public class ItemsHZDS
 {
+	public static CreativeTabs tabHZDSItems = new CreativeTabHZDS(CreativeTabs.getNextID(), "hzdslib_items");
+
 	public static ItemHZDS radiation_detector = null;
 	
 	public static void init() {
