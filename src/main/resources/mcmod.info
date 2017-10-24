@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hzdslib",
+  "name": "Hazards Lib",
+  "description": "Placeholder description.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ZCaliptium"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
