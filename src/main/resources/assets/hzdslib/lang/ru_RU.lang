@@ -1,2 +1,6 @@
-death.hzdslib.radiation=%1$s умер от лучевой болезни
+death.hzdslib.radiation=%1$s умер от лучевой болезни.
 death.hzdslib.radiation_dd=%1$s получил смертельную дозу радиации.
+
+item.antirad.name=Антирад
+item.radiation_detector.name=Счётчик Гейгера
+item.debug_radgiver.name=Отладочный Выдаватель Радиации

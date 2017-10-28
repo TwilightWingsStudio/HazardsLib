@@ -19,7 +19,7 @@ public class ItemsHZDS
 	public static void init()
 	{
 		new ItemAntirad("antirad");
-		new ItemRadGiver("radgiver");
+		new ItemRadGiver("debug_radgiver");
 		
 		radiation_detector = new ItemHZDS("radiation_detector");
 	}
