@@ -27,10 +27,16 @@ public class ItemAntirad extends ItemHZDS
 			return itemStack;
 		}
 
-		if (player instanceof EntityPlayerMP) {
+		if (player instanceof EntityPlayerMP)
+		{
 			PlayerTracker tracker = TrackerManager.lookupTracker(player);
+
 			if (tracker != null) {
-				tracker.radiation = 0;
+				tracker.radiation -= 1000;
+				
+				if (tracker.radiation < 0) {
+					tracker.radiation = 0;
+				}
 			}
 		}
 		
