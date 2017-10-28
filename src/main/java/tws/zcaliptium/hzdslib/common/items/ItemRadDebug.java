@@ -14,10 +14,15 @@ import net.minecraft.world.World;
 import tws.zcaliptium.hzdslib.common.trackers.PlayerTracker;
 import tws.zcaliptium.hzdslib.common.trackers.TrackerManager;
 
-public class ItemRadGiver extends ItemHZDS
+public class ItemRadDebug extends ItemHZDS
 {
-	public ItemRadGiver(String id) {
+	boolean isGiver;
+	
+	public ItemRadDebug(String id, boolean giver)
+	{
 		super(id);
+		
+		this.isGiver = giver;
 	}
 	
 	@Override
@@ -27,10 +32,16 @@ public class ItemRadGiver extends ItemHZDS
 			return itemStack;
 		}
 
-		if (player instanceof EntityPlayerMP) {
+		if (player instanceof EntityPlayerMP)
+		{
 			PlayerTracker tracker = TrackerManager.lookupTracker(player);
+
 			if (tracker != null) {
-				tracker.radiation += 1000;
+				if (isGiver) {
+					tracker.radiation += 1000;
+				} else {
+					tracker.radiation = 0;
+				}
 			}
 		}
 		

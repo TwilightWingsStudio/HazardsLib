@@ -4,3 +4,4 @@ death.hzdslib.radiation_dd=%1$s catched lethal dose of radiation.
 item.antirad.name=Antirad
 item.radiation_detector.name=Geiger Counter
 item.debug_radgiver.name=Debug Radiation Giver
+item.debug_radremover.name=Debug Radiation Remover

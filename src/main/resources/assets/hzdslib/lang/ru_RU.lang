@@ -4,3 +4,4 @@ death.hzdslib.radiation_dd=%1$s получил смертельную дозу �
 item.antirad.name=Антирад
 item.radiation_detector.name=Счётчик Гейгера
 item.debug_radgiver.name=Отладочный Выдаватель Радиации
+item.debug_radremover.name=Отладочный Убиратель Радиации
