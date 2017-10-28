@@ -110,11 +110,21 @@ public class PlayerTracker
 			
 			//System.out.println("Damage: " + damage);
 			
+			boolean lethalDose = false;
+			
+			if (radiation >= 14000) {
+				lethalDose = true;
+			}
+			
 			if (damage > 0.0F) {
 				if (health > damage) {
 					owner.setHealth(health - damage);
 				} else {
-					owner.attackEntityFrom(DamageSourceHZDS.radiation, 1000.0F);
+					if (lethalDose) {
+						owner.attackEntityFrom(DamageSourceHZDS.radiationDD, 1000.0F);
+					} else {
+						owner.attackEntityFrom(DamageSourceHZDS.radiation, 1000.0F);
+					}
 				}
 			}
 		}

@@ -46,10 +46,10 @@ public class ClientEventHandler
 		if (event.phase != TickEvent.Phase.START) {
 		    if ((Minecraft.getMinecraft().renderViewEntity instanceof EntityPlayer)) {
 		    	EntityPlayer player = (EntityPlayer)Minecraft.getMinecraft().renderViewEntity;
-		        if ((player != null) && (mc.inGameHasFocus) && (Minecraft.isGuiEnabled())) {
-		        	
-		        	if (isPlayerHasItemOnHotbar(player.inventory, ItemsHZDS.radiation_detector)) {
 
+		        if ((player != null) && (mc.inGameHasFocus) && (Minecraft.isGuiEnabled())) {
+		        	// If player have radiation detector on hotbar.
+		        	if (isPlayerHasItemOnHotbar(player.inventory, ItemsHZDS.radiation_detector)) {
 	        			PlayerTracker tracker = TrackerManager.lookupTrackerFromUsername(mc.thePlayer.getCommandSenderName());
 	        			
 	        			if (tracker != null) {
@@ -62,8 +62,8 @@ public class ClientEventHandler
 		}
 	}
 	
-	
-	public void renderRadiation(PlayerTracker tracker) {
+	public void renderRadiation(PlayerTracker tracker)
+	{
 		Minecraft mc = FMLClientHandler.instance().getClient();
 		
 		mc.fontRenderer.drawString("Radiation: " + tracker.radiation + " RADS", 50, 50, 16777215);
