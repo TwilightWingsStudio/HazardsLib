@@ -36,11 +36,12 @@ public class ItemRadDebug extends ItemHZDS
 		{
 			PlayerTracker tracker = TrackerManager.lookupTracker(player);
 
-			if (tracker != null) {
+			if (tracker != null)
+			{
 				if (isGiver) {
-					tracker.radiation += 1000;
+					tracker.increaseRadiation(1000);
 				} else {
-					tracker.radiation = 0;
+					tracker.resetRadiation();
 				}
 			}
 		}

@@ -132,7 +132,29 @@ public class PlayerTracker
 		TrackerManager.saveTracker(this);
 	}
 	
-	public void resetData() {
+	public void resetData()
+	{
+		radiation = 0;
+	}
+	
+	public void increaseRadiation(int incValue)
+	{
+		incValue = Math.abs(incValue);
+		radiation += incValue;
+	}
+	
+	public void decreaseRadiation(int decValue)
+	{
+		decValue = Math.abs(decValue);
+		radiation -= decValue;
+		
+		if (radiation < 0) {
+			radiation = 0;
+		}
+	}
+	
+	public void resetRadiation()
+	{
 		radiation = 0;
 	}
 	

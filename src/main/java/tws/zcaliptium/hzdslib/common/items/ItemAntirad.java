@@ -32,11 +32,7 @@ public class ItemAntirad extends ItemHZDS
 			PlayerTracker tracker = TrackerManager.lookupTracker(player);
 
 			if (tracker != null) {
-				tracker.radiation -= 1000;
-				
-				if (tracker.radiation < 0) {
-					tracker.radiation = 0;
-				}
+				tracker.decreaseRadiation(1000);
 			}
 		}
 		
