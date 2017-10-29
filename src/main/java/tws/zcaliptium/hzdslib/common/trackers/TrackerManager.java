@@ -24,8 +24,6 @@ public class TrackerManager
 {
 	public static HashMap<String, PlayerTracker> trackerList = new HashMap<String, PlayerTracker>();
 	
-	public static String HZDSLIB_RADIATION = "HZDSLIB_RADIATION";
-	
 	public static PlayerTracker lookupTracker(EntityLivingBase entity)
 	{
 		if (entity instanceof EntityPlayer) {
@@ -48,12 +46,12 @@ public class TrackerManager
 		HashMap<String,PlayerTracker> tempList = new HashMap<String,PlayerTracker>(trackerList);
 		Iterator<PlayerTracker> iterator = tempList.values().iterator();
 		
-		while(iterator.hasNext()) {
+		while(iterator.hasNext())
+		{
 			PlayerTracker tracker = iterator.next();
 			
 			if (tracker.owner.worldObj == world) {
-				NBTTagCompound tags = tracker.owner.getEntityData();
-				tags.setInteger(HZDSLIB_RADIATION, tracker.radiation);
+				tracker.saveToNBT();
 			}
 		}
 	}
@@ -63,12 +61,14 @@ public class TrackerManager
 		HashMap<String,PlayerTracker> tempList = new HashMap<String,PlayerTracker>(trackerList);
 		Iterator<PlayerTracker> iterator = tempList.values().iterator();
 		
-		while(iterator.hasNext()) {
+		while(iterator.hasNext())
+		{
 			PlayerTracker tracker = iterator.next();
 			
-			if (tracker.owner.worldObj == world) {
-				NBTTagCompound tags = tracker.owner.getEntityData();
-				tags.setInteger(HZDSLIB_RADIATION, tracker.radiation);
+			if (tracker.owner.worldObj == world)
+			{
+				tracker.saveToNBT();
+
 				if (tracker.owner instanceof EntityPlayer) {
 					trackerList.remove(tracker.owner.getCommandSenderName());
 				} else {
@@ -80,8 +80,7 @@ public class TrackerManager
 
 	
 	public static void saveTracker(PlayerTracker tracker) {
-		NBTTagCompound tags = tracker.owner.getEntityData();
-		tags.setFloat(HZDSLIB_RADIATION, tracker.radiation);
+		tracker.saveToNBT();
 	}
 	
 	public static void updateTracker(PlayerTracker tracker)
@@ -97,9 +96,9 @@ public class TrackerManager
 				}
 			}
 		}
-		
+
 		tracker.updateTimer += 1;
-		
+
 		if (tracker.updateTimer >= 10) {
 			tracker.updateData();
 			
@@ -111,8 +110,10 @@ public class TrackerManager
 	
 	public static void removeTracker(PlayerTracker tracker)
 	{
-		if (trackerList.containsValue(tracker)) {
+		if (trackerList.containsValue(tracker))
+		{
 			tracker.isDisabled = true;
+
 			if (tracker.owner instanceof EntityPlayer) {
 				trackerList.remove(tracker.owner.getCommandSenderName());
 			} else {
@@ -137,7 +138,6 @@ public class TrackerManager
 		}
 		
 		if (tracker.owner instanceof EntityPlayerMP) {
-			
 			PacketHandler.INSTANCE.sendTo(new MsgSyncRadiation(tracker.radiation), (EntityPlayerMP)tracker.owner);
 		}
 	}

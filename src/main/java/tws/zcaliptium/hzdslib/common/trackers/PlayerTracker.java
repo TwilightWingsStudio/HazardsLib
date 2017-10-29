@@ -15,8 +15,15 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import tws.zcaliptium.hzdslib.common.DamageSourceHZDS;
 
+/**
+ * A class created for holding some extra variables related to player.
+ * Because we can't simply open player entity class and define there new field for our purposes.
+ */
 public class PlayerTracker
 {
+	public static String NBT_RADIATION = "HZDSLIB_RADIATION";
+	public static int MAX_RADIATION = 30000;
+	
 	public EntityLivingBase owner;
 	
 	public int prevRadiation = 0;
@@ -31,14 +38,22 @@ public class PlayerTracker
 		this.owner = owner;
 	}
 	
-	public void loadFromNBT() {
+	public void loadFromNBT()
+	{
 		NBTTagCompound tags = owner.getEntityData();
 		
-		if (tags.hasKey(TrackerManager.HZDSLIB_RADIATION)) {
-			radiation = tags.getInteger(TrackerManager.HZDSLIB_RADIATION);
+		if (tags.hasKey(NBT_RADIATION)) {
+			radiation = tags.getInteger(NBT_RADIATION);
 		}
 		
 		clampSafeRange();
+	}
+	
+	public void saveToNBT()
+	{
+		NBTTagCompound tags = owner.getEntityData();
+		
+		tags.setInteger(NBT_RADIATION, radiation);
 	}
 	
 	public void updateData()
@@ -134,6 +149,7 @@ public class PlayerTracker
 	
 	public void resetData()
 	{
+		// TODO: Put here all variables to reset.
 		radiation = 0;
 	}
 	
@@ -141,6 +157,8 @@ public class PlayerTracker
 	{
 		incValue = Math.abs(incValue);
 		radiation += incValue;
+		
+		clampSafeRange();
 	}
 	
 	public void decreaseRadiation(int decValue)
@@ -148,9 +166,7 @@ public class PlayerTracker
 		decValue = Math.abs(decValue);
 		radiation -= decValue;
 		
-		if (radiation < 0) {
-			radiation = 0;
-		}
+		clampSafeRange();
 	}
 	
 	public void resetRadiation()
@@ -160,6 +176,6 @@ public class PlayerTracker
 	
 	public void clampSafeRange()
 	{
-		radiation = MathHelper.clamp_int(radiation, 0, 15000);
+		radiation = MathHelper.clamp_int(radiation, 0, MAX_RADIATION);
 	}
 }
