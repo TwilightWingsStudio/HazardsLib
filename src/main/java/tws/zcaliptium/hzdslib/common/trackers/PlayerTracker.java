@@ -23,6 +23,7 @@ public class PlayerTracker
 {
 	public static String NBT_RADIATION = "HZDSLIB_RADIATION";
 	public static int MAX_RADIATION = 30000;
+	public static int RADIATION_INSTAKILL_DOSE = 20000;
 	
 	public EntityLivingBase owner;
 	
@@ -84,10 +85,11 @@ public class PlayerTracker
 		
 		boolean hasRadiation = radiation > 0;
 		
-		if (!isCreative && hasRadiation) {
+		if (!isCreative && hasRadiation)
+		{
 			float health = owner.getHealth();
 			
-			if (radiation >= 20000) {
+			if (radiation >= RADIATION_INSTAKILL_DOSE) {
 				damage = 1000.0F;
 			} else if (radiation >= 15000) {
 				damage = 0.2F;    // 1m
@@ -157,6 +159,10 @@ public class PlayerTracker
 	{
 		incValue = Math.abs(incValue);
 		radiation += incValue;
+		
+		if (radiation >= RADIATION_INSTAKILL_DOSE) {
+			owner.attackEntityFrom(DamageSourceHZDS.radiationDD, 1000.0F);
+		}
 		
 		clampSafeRange();
 	}
