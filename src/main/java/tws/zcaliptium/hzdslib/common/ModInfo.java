@@ -10,6 +10,6 @@ package tws.zcaliptium.hzdslib.common;
 public class ModInfo
 {
 	public static final String MODID = "hzdslib";
-	public static final String MODNAME = "Hazards Lib";
+	public static final String MODNAME = "HazardsLib";
 	public static final String VERSION = "dev";
 }

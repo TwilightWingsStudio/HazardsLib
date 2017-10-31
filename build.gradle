@@ -61,3 +61,30 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+// Create deobfuscated jar.
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+}
+
+// Create an API archive.
+task apiJar(type: Jar) {
+    from(sourceSets.main.java) {
+        include "tws/zcaliptium/hzdslib/api/**"
+    }
+
+    classifier = 'api'
+}
+
+// Create archive with a source code.
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives deobfJar
+    archives apiJar
+    archives sourcesJar
+}
