@@ -9,10 +9,13 @@ package tws.zcaliptium.hzdslib.common.trackers;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
+import tws.zcaliptium.hzdslib.api.item.IEffectiveItem;
 import tws.zcaliptium.hzdslib.common.DamageSourceHZDS;
 
 /**
@@ -57,6 +60,28 @@ public class PlayerTracker
 		tags.setInteger(NBT_RADIATION, radiation);
 	}
 	
+	public int getItemsRadioactivity()
+	{
+		int radioactivity = 0;
+		
+		for (ItemStack stack : ((EntityPlayer)owner).inventory.mainInventory)
+		{
+			if (stack == null) {
+				continue;
+			}
+			
+			Item stackItem = stack.getItem();
+			
+			if (stackItem != null && stackItem instanceof IEffectiveItem) {
+				IEffectiveItem effectiveItem = (IEffectiveItem)stackItem;
+				
+				radioactivity += effectiveItem.getRadioactivity() * stack.stackSize;
+			}
+		}
+		
+		return radioactivity;
+	}
+	
 	/*
 	 * 120-150 Gy (12000 - 15000 Rad) - Instant Death
 	 */
@@ -77,11 +102,18 @@ public class PlayerTracker
 		}
 		
 		boolean isCreative = false;
+		int itemsRadiation = 0;
 		
 		if (owner instanceof EntityPlayer) {
 			if (((EntityPlayer)owner).capabilities.isCreativeMode) {
 				isCreative = true;
 				radiation = prevRadiation;
+			}
+			
+			// Survival.
+			if (!isCreative) {
+				itemsRadiation = getItemsRadioactivity();
+				radiation += itemsRadiation;
 			}
 		}
 		

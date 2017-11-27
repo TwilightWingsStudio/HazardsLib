@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -45,8 +46,14 @@ public class ClientEventHandler
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent ev)
 	{
-		if (ev.itemStack.getItem() instanceof IEffectiveItem) {
+		ItemStack itemStack = ev.itemStack;
+		
+		if (itemStack.getItem() instanceof IEffectiveItem) {
+			int itemRadioactivity = ((IEffectiveItem)itemStack.getItem()).getRadioactivity();
+			
 			ev.toolTip.add("IEffectiveItem");
+			ev.toolTip.add("Radioactivity: " + itemRadioactivity);
+			ev.toolTip.add("Stack Radioactivity: " + itemRadioactivity * itemStack.stackSize);
 		}
 	}
 	
