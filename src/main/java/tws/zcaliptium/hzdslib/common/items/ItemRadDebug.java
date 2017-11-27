@@ -7,10 +7,16 @@
  ******************************************************************************/
 package tws.zcaliptium.hzdslib.common.items;
 
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import tws.zcaliptium.hzdslib.common.ModInfo;
 import tws.zcaliptium.hzdslib.common.trackers.PlayerTracker;
 import tws.zcaliptium.hzdslib.common.trackers.TrackerManager;
 
@@ -48,4 +54,10 @@ public class ItemRadDebug extends ItemHZDS
 		
 		return itemStack;
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bo)
+    {
+    	list.add(StatCollector.translateToLocal(this.getUnlocalizedName(stack) + ".desc"));
+    }
 }

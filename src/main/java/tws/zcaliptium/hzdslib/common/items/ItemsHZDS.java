@@ -21,6 +21,7 @@ public class ItemsHZDS
 		new ItemAntirad("antirad");
 		new ItemRadDebug("debug_radgiver", true);
 		new ItemRadDebug("debug_radremover", false);
+		new ItemRadioactive("debug_uranium238piece");
 		
 		radiation_detector = new ItemHZDS("radiation_detector");
 	}

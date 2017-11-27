@@ -5,3 +5,7 @@ item.antirad.name=Антирад
 item.radiation_detector.name=Дозиметр
 item.debug_radgiver.name=Отладочный Выдаватель Радиации
 item.debug_radremover.name=Отладочный Убиратель Радиации
+item.debug_uranium238piece.name=Отладочный Кусочек Урана-238
+
+item.debug_radremover.desc=При исп. обнуляет радиацию.
+item.debug_radgiver.desc=При исп. даёт 1000 рад.

@@ -57,6 +57,10 @@ public class PlayerTracker
 		tags.setInteger(NBT_RADIATION, radiation);
 	}
 	
+	/*
+	 * 120-150 Gy (12000 - 15000 Rad) - Instant Death
+	 */
+	
 	public void updateData()
 	{
 		prevRadiation = radiation;

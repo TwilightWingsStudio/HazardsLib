@@ -5,3 +5,7 @@ item.antirad.name=Antirad
 item.radiation_detector.name=Geiger Counter
 item.debug_radgiver.name=Debug Radiation Giver
 item.debug_radremover.name=Debug Radiation Remover
+item.debug_uranium238piece.name=Debug Uranium-238 Piece
+
+item.debug_radremover.desc=On use resets radiation.
+item.debug_radgiver.desc=On use +1000 RADs.
