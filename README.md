@@ -19,6 +19,7 @@ Goal of this mod - provide universal API for hazards like:
 
 ## Building
 To setup project file open command line and type:
+ * `gradlew setupDecompWorkspace` (optional, gives you see MC source code in IDE)
  * `gradlew setupDevWorkspace`
  * For eclipse: `gradlew eclipse`
  * For IDEA: `gradlew idea`
